@@ -1,11 +1,28 @@
 <body>
-  <form>
-    Regex Pattern<br>
-    <input type="text" required="required" name="Pattern"><br>
-    Text Area<br>
-    <input type="text" required="required" name="Text"><br>
-    File<input type="file" required="required">
-    <br>
-    <input type="submit" value="Submit">
-  </form> 
+  <div class="container-fluid mb-5">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+      <!------{{ userForm.value |json }}-->
+      <hr/>
+      <!----{{ userModel | json}}--->
+          <div class="form-group">
+            <label>
+              Regex Pattern:
+            </label>
+            <input type="text" required class="form-control" name="regexPattern" [(ngModel)]="userModel.regexPattern">
+          </div>
+          <div class="form-group">
+            <label>
+              Text Area:
+            </label>
+            <input type="text" required  class="form-control" name="textArea" [(ngModel)]="userModel.textArea">
+          </div>
+          <div class="form-group">
+            <label>
+              File Input:
+            </label>
+            <input type="text" required id="fileInput"  class="form-control" name="fileInput" [(ngModel)] ="userModel.fileInput">
+          </div>
+          <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </body>
